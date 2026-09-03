@@ -1,8 +1,15 @@
 ---
 import ThemeToggle from './ThemeToggle.astro';
-import { site, withBase, navLinks } from '../data/site';
+import { site, withBase } from '../data/site';
 
-
+const navLinks = [
+  { href: "/", label: "Home" },
+  { href: "/projects", label: "Projects" },
+  { href: "/work", label: "Work" },
+  { href: "/speaking", label: "Speaking" },
+  { href: "/blog", label: "Blog" },
+  { href: "/about", label: "About" },
+].map((l) => ({ ...l, href: withBase(l.href) }));
 ---
 
 <header class="site-header">

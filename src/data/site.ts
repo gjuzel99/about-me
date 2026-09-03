@@ -22,14 +22,6 @@ export interface SocialLink {
  *  social links) reads from here.
  * ─────────────────────────────────────────────────────────────
  */
-export const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/projects", label: "Projects" },
-  { href: "/work", label: "Work" },
-  { href: "/speaking", label: "Speaking" },
-  { href: "/blog", label: "Blog" },
-  { href: "/about", label: "About" },
-];
 
 export const site = {
   /** Your full name — used for <title> and meta tags */
