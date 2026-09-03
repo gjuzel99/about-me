@@ -1,0 +1,169 @@
+---
+import { speakingEngagements } from '../data/speaking';
+---
+
+<section class="section" id="speaking">
+  <div class="container">
+    <div class="speaking-list">
+      {
+        speakingEngagements.map((session) => (
+          <article class="card speaking-card">
+            <div class="speaking-meta">
+              <span>{session.date}</span>
+
+              {session.type && (
+                <>
+                  <span class="separator">·</span>
+                  <span>{session.type}</span>
+                </>
+              )}
+            </div>
+
+            <p class="event">{session.event}</p>
+
+            <h2>{session.title}</h2>
+
+            {session.coSpeakers && session.coSpeakers.length > 0 && (
+              <p class="co-speakers">
+                With {session.coSpeakers.join(', ')}
+              </p>
+            )}
+
+            {session.description && (
+              <p class="muted description">
+                {session.description}
+              </p>
+            )}
+
+            {session.tags && session.tags.length > 0 && (
+              <div class="tags">
+                {session.tags.map((tag) => (
+                  <span class="tag">{tag}</span>
+                ))}
+              </div>
+            )}
+
+            {(session.eventUrl ||
+              session.videoUrl ||
+              session.slidesUrl) && (
+              <div class="links">
+                {session.eventUrl && (
+                  <a
+                    href={session.eventUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Event →
+                  </a>
+                )}
+
+                {session.videoUrl && (
+                  <a
+                    href={session.videoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Watch →
+                  </a>
+                )}
+
+                {session.slidesUrl && (
+                  <a
+                    href={session.slidesUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Slides →
+                  </a>
+                )}
+              </div>
+            )}
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .speaking-list {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .speaking-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .speaking-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 0.75rem;
+
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .separator {
+    opacity: 0.6;
+  }
+
+  .event {
+    margin: 0 0 0.35rem;
+
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-strong);
+  }
+
+  .speaking-card h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    line-height: 1.4;
+  }
+
+  .co-speakers {
+    margin: 0.5rem 0 0;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .description {
+    max-width: 750px;
+    margin: 1rem 0 0;
+    line-height: 1.65;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .tag {
+    padding: 0.25rem 0.55rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-muted);
+  }
+
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.25rem;
+  }
+
+  .links a {
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+</style>

@@ -1,0 +1,75 @@
+---
+import { certifications } from '../data/resume';
+---
+
+<section class="section" id="certifications">
+  <div class="container">
+    <p class="eyebrow">Certifications</p>
+    <h2 class="section-heading">Certifications</h2>
+
+    <div class="cert-grid">
+      {
+        certifications.map((certification) => (
+          <div class="card">
+            <p
+              class="muted"
+              style="font-family: var(--font-mono); font-size: 0.8rem; margin: 0 0 0.4rem;"
+            >
+              {certification.date}
+            </p>
+
+            <h3>{certification.name}</h3>
+
+            <p
+              style="margin: 0 0 0.2rem; font-weight: 600; color: var(--text-strong);"
+            >
+              {certification.issuer}
+            </p>
+
+            {
+              certification.credential && (
+                <p class="muted" style="margin: 0;">
+                  {certification.credential}
+                </p>
+              )
+            }
+
+            {
+              certification.credentialUrl && (
+                <a
+                  href={certification.credentialUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="cert-link"
+                >
+                  View credential →
+                </a>
+              )
+            }
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .cert-link {
+    display: inline-block;
+    margin-top: 0.8rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  @media (max-width: 900px) {
+    .cert-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

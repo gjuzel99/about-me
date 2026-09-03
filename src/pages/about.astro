@@ -1,0 +1,193 @@
+---
+import Layout from '../components/Layout.astro';
+import { site, withBase } from '../data/site';
+
+const links = Object.values(site.socials).filter(
+  (social) =>
+    social.url.startsWith('http') ||
+    social.url.startsWith('mailto')
+);
+---
+
+<Layout
+  title="About"
+  description={`About ${site.author.name} — software engineering, Power Platform, open source, electronics, and community.`}
+  image="/img/og.jpg"
+>
+  <section class="section">
+    <div class="container about-container">
+      <p class="eyebrow">About</p>
+
+      <h1>More than just the technology.</h1>
+
+      <div class="about-content">
+        <p class="lead">
+          I'm a Software Engineer from North Macedonia focused on Microsoft
+          Dynamics 365 CE and the Power Platform.
+        </p>
+
+        <p>
+          I enjoy solving complex business problems, but I'm just as interested
+          in the engineering behind the solution — writing code, software
+          architecture, maintainability, testing, developer tooling, and finding
+          better ways to build software.
+        </p>
+
+        <p>
+          I've always enjoyed exploring technology beyond what I use in my
+          day-to-day work. I like experimenting with new technologies,
+          understanding how things work, and learning by building rather than
+          only reading about them.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container about-container">
+      <p class="eyebrow">Building & Sharing</p>
+
+      <h2 class="section-heading">Learning by building</h2>
+
+      <div class="about-content">
+        <p>
+          A big part of how I learn is through building things.
+        </p>
+
+        <p>
+          I work on open-source projects where I can experiment with ideas,
+          explore different approaches, and turn what I learn into something
+          practical.
+        </p>
+
+        <p>
+          I also enjoy sharing that experience through technical sessions,
+          community events, videos, and conversations with other developers.
+          Explaining something to someone else is often one of the best ways for
+          me to understand it better myself.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container about-container">
+      <p class="eyebrow">Beyond Software</p>
+
+      <h2 class="section-heading">Electronics & hardware</h2>
+
+      <div class="about-content">
+        <p>
+          My interest in technology doesn't stop at software. In my free time,
+          I enjoy working with electronics, repairing hardware, soldering, and
+          understanding how devices work at a physical level.
+        </p>
+
+        <p>
+          There is something satisfying about taking something that doesn't work,
+          finding the problem, and bringing it back to life — whether the problem
+          is in software or hardware.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container about-container">
+      <p class="eyebrow">Volleyball</p>
+
+      <h2 class="section-heading">Away from the screen</h2>
+
+      <div class="about-content">
+        <p>
+          Sport has also been an important part of my life. I played competitive
+          senior-level volleyball for three seasons between 2016 and 2019.
+        </p>
+
+        <p>
+          After several years away from the sport, I returned to playing in 2025
+          and continue to play alongside my work in software engineering.
+        </p>
+
+        <p>
+          Volleyball gives me something very different from programming —
+          teamwork, competition, discipline, and a reason to completely
+          disconnect from a screen for a while.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container about-container">
+      <p class="eyebrow">Currently</p>
+
+      <h2 class="section-heading">What I'm exploring now</h2>
+
+      <div class="about-content">
+        <p>
+          Right now, I'm continuing to build and explore around Dynamics 365 CE
+          and the Power Platform, software architecture, developer tooling,
+          Copilot and agent experiences, and open-source development.
+        </p>
+
+        <p>
+          I'm always interested in learning something new, writing better
+          software, building useful things, and sharing what I discover along the
+          way.
+        </p>
+      </div>
+
+      <div class="about-links">
+        {
+          links.map((social) => (
+            <a
+              href={withBase(social.url)}
+              target={social.url.startsWith('http') ? '_blank' : undefined}
+              rel="noopener noreferrer"
+            >
+              {social.label} →
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .about-container {
+    max-width: 820px;
+  }
+
+  .about-content {
+    max-width: 720px;
+  }
+
+  .about-content p {
+    margin: 0 0 1.25rem;
+    line-height: 1.75;
+  }
+
+  .about-content p:last-child {
+    margin-bottom: 0;
+  }
+
+  .lead {
+    font-size: 1.2rem;
+    line-height: 1.65;
+    color: var(--text-strong);
+  }
+
+  .about-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .about-links a {
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+</style>

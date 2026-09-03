@@ -1,0 +1,165 @@
+---
+import { projects } from '../data/projects';
+---
+
+<section class="section section-alt" id="projects">
+  <div class="container">
+    <p class="eyebrow">Open Source</p>
+    <h2 class="section-heading">Projects</h2>
+
+    <p class="muted projects-intro">
+      A selection of open-source projects, experiments, and tools I build while
+      exploring software engineering, architecture, and the Power Platform.
+    </p>
+
+    {
+      projects.length > 0 ? (
+        <div class="projects-grid">
+          {projects.map((project) => (
+            <article class="card project-card">
+              <div class="project-header">
+                <div>
+                  <h3>{project.title}</h3>
+
+                  {project.status && (
+                    <span class="project-status">
+                      {project.status}
+                    </span>
+                  )}
+                </div>
+              </div>
+
+              <p class="muted project-description">
+                {project.description}
+              </p>
+
+              {project.tags?.length > 0 && (
+                <div class="project-tags">
+                  {project.tags.map((tag) => (
+                    <span class="project-tag">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              <div class="project-links">
+                {project.githubUrl && (
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    GitHub →
+                  </a>
+                )}
+
+                {project.websiteUrl && (
+                  <a
+                    href={project.websiteUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Website →
+                  </a>
+                )}
+
+                {project.videoUrl && (
+                  <a
+                    href={project.videoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Watch →
+                  </a>
+                )}
+              </div>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <p class="muted">
+          Projects will be added soon.
+        </p>
+      )
+    }
+  </div>
+</section>
+
+<style>
+  .projects-intro {
+    max-width: 680px;
+    margin: 0 0 2rem;
+    line-height: 1.7;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .project-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .project-header h3 {
+    margin: 0;
+  }
+
+  .project-status {
+    display: inline-block;
+    margin-top: 0.4rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .project-description {
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .project-tag {
+    padding: 0.25rem 0.55rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-muted);
+  }
+
+  .project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: auto;
+    padding-top: 0.5rem;
+  }
+
+  .project-links a {
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  @media (max-width: 800px) {
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

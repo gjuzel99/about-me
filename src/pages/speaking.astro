@@ -1,0 +1,30 @@
+---
+import Layout from '../components/Layout.astro';
+import Speaking from '../components/Speaking.astro';
+import { site } from '../data/site';
+---
+
+<Layout
+  title="Speaking"
+  description={`Conference sessions and community speaking by ${site.author.name}.`}
+  image="/img/og.jpg"
+>
+  <section class="section section-alt">
+    <div class="container">
+      <p class="eyebrow">Speaking</p>
+
+      <h1>Sharing what I learn</h1>
+
+      <p
+        class="muted"
+        style="max-width: 680px; margin: 0;"
+      >
+        Conference sessions and technical talks where I share practical
+        experience around Dynamics 365 CE, Power Platform, software
+        development, and engineering practices.
+      </p>
+    </div>
+  </section>
+
+  <Speaking />
+</Layout>
