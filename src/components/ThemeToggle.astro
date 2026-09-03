@@ -2,26 +2,42 @@
 import Icon from './Icon.astro';
 ---
 
-<button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme">
-  <span class="icon-sun"><Icon name="sun" size={18} /></span>
-  <span class="icon-moon"><Icon name="moon" size={18} /></span>
+<button
+  class="theme-toggle"
+  id="theme-toggle"
+  type="button"
+  aria-label="Toggle theme"
+>
+  <span id="icon-moon">
+    <Icon name="moon" size={18} />
+  </span>
+
+  <span id="icon-sun">
+    <Icon name="sun" size={18} />
+  </span>
 </button>
 
-<style>
-  .icon-sun, .icon-moon {
-    display: inline-flex;
-    align-items: center;
+<script is:inline>
+  const button = document.getElementById('theme-toggle');
+  const moon = document.getElementById('icon-moon');
+  const sun = document.getElementById('icon-sun');
+
+  function updateIcon() {
+    const isDark = document.documentElement.dataset.theme === 'dark';
+
+    moon.style.display = isDark ? 'inline-flex' : 'none';
+    sun.style.display = isDark ? 'none' : 'inline-flex';
   }
-  html[data-theme='dark'] .icon-sun { display: none; }
-  html[data-theme='light'] .icon-moon { display: none; }
-</style>
 
-<script>
-  const btn = document.getElementById('theme-toggle') as HTMLButtonElement;
+  updateIcon();
 
-  btn.addEventListener('click', () => {
-    const dark = document.documentElement.dataset.theme === 'dark';
-    document.documentElement.dataset.theme = dark ? 'light' : 'dark';
-    localStorage.setItem('theme', dark ? 'light' : 'dark');
+  button?.addEventListener('click', () => {
+    const isDark = document.documentElement.dataset.theme === 'dark';
+    const theme = isDark ? 'light' : 'dark';
+
+    document.documentElement.dataset.theme = theme;
+    localStorage.setItem('theme', theme);
+
+    updateIcon();
   });
 </script>
