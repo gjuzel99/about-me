@@ -1,144 +1,199 @@
-# Astro Wanderer
+# Gjorgji Gjuzelov — Personal Website
 
-A personal site theme for [Astro](https://astro.build) — portfolio, blog, and travel photo galleries in one quiet, fast template.
+My personal website and developer portfolio, built with [Astro](https://astro.build).
 
-**[Live demo](https://igagansingh.com/astro-wanderer)**
+The website is a central place for my professional experience, open-source projects, conference sessions, technical writing, and things I learn while working with software and technology.
 
-![Astro Wanderer homepage](screenshot.png)
+## About
 
-## Why Wanderer
+I'm a Software Engineer focused on Microsoft Dynamics 365 CE and the Power Platform.
 
-Most developer portfolios stop at the work page. Wanderer is built around the idea that a good personal site shows what you're like *when you're not working* — so it ships with a travel section where every trip is a story with a photo carousel and lightbox, right next to your résumé and blog.
+I enjoy writing code, exploring new technologies, software architecture, developer tooling, open-source development, and sharing practical knowledge with the developer community.
 
-## Features
+The website brings together the different areas of my work and interests:
 
-- **Home** — hero with a typing animation, avatar, and social links
-- **Work** — expandable experience timeline, education, and skill groups, all from one data file
-- **Blog** — markdown posts with tags, tag pages, prev/next navigation, reading time, and drafts
-- **Travel** — trip entries with hero images, highlight badges, photo carousel, lightbox with keyboard navigation, and optional video support
-- **Zero JS by default** — only three tiny scripts (theme toggle, typing effect, gallery); no framework runtime
-- **Dark/light mode** — respects `prefers-color-scheme`, remembers your choice, no flash on load
-- **SEO ready** — canonical URLs, Open Graph/Twitter cards, JSON-LD structured data, sitemap, RSS feed
-- **Accessible** — semantic HTML, skip-free keyboard navigation in galleries, `aria` labels throughout
-- **One config file** — name, socials, bio, and résumé all live in plain TypeScript data files
-- **100/100 Lighthouse** out of the box on a static build
+- professional experience and skills;
+- open-source projects;
+- conference and community speaking;
+- certifications;
+- technical articles and project notes;
+- software engineering and technology interests.
 
-## Quick start
+## Sections
 
-Use this template with the Astro CLI:
+### Work
 
-```sh
-npm create astro@latest -- --template igagansingh/astro-wanderer
+Professional experience, education, skills, and Microsoft certifications.
+
+### Projects
+
+Open-source and personal engineering projects, including:
+
+**Reusable PCF Controls with React**  
+An open-source project exploring reusable, maintainable, and testable Power Apps Component Framework controls using React and a shared component architecture.
+
+**Community Event Hub**  
+An open-source Power Platform project where I am building a maintainable event-management solution and documenting the architecture and engineering decisions along the way.
+
+### Speaking
+
+Conference and community sessions around Dynamics 365 CE, Power Platform, PCF, TypeScript, JavaScript, and software development.
+
+This includes sessions at DynamicsMinds, Digiton/BizApps, and other technical events.
+
+### Blog
+
+Technical articles, project notes, experiments, and things I learn while building and exploring software.
+
+### About
+
+More about how I approach engineering, open source, community work, electronics and hardware, and some of my interests outside software.
+
+## Technology
+
+The website intentionally uses a small and simple technology stack:
+
+- Astro
+- TypeScript
+- HTML
+- CSS
+- Markdown / Astro Content Collections
+
+The site is statically generated and does not require a backend or database.
+
+## Project Structure
+
+```text
+├── public/
+│   └── img/
+│
+├── src/
+│   ├── components/
+│   │   ├── Certifications.astro
+│   │   ├── Education.astro
+│   │   ├── Experience.astro
+│   │   ├── Header.astro
+│   │   ├── Hero.astro
+│   │   ├── Layout.astro
+│   │   ├── PostCard.astro
+│   │   ├── Projects.astro
+│   │   ├── Skills.astro
+│   │   └── Speaking.astro
+│   │
+│   ├── content/
+│   │   └── blog/
+│   │
+│   ├── data/
+│   │   ├── projects.ts
+│   │   ├── resume.ts
+│   │   ├── site.ts
+│   │   └── speaking.ts
+│   │
+│   ├── pages/
+│   │   ├── about.astro
+│   │   ├── blog/
+│   │   ├── index.astro
+│   │   ├── projects.astro
+│   │   ├── speaking.astro
+│   │   └── work.astro
+│   │
+│   └── styles/
+│       └── global.css
+│
+├── astro.config.mjs
+├── package.json
+└── README.md
 ```
 
-Or clone it directly:
+## Running Locally
 
-```sh
-git clone https://github.com/igagansingh/astro-wanderer.git
-cd astro-wanderer
+Install the dependencies:
+
+```bash
 npm install
+```
+
+Start the development server:
+
+```bash
 npm run dev
 ```
 
-Then open `src/data/site.ts` — it's the single source of truth for your name, tagline, social links, and production URL. The sample post in `src/content/blog/getting-started.md` walks through everything else.
+Create a production build:
 
-## Project structure
-
-```
-├── public/
-│   └── img/              # avatar, og image, trip photos
-├── src/
-│   ├── components/       # Header, Hero, Gallery, PostCard, …
-│   ├── content/
-│   │   ├── blog/         # markdown posts
-│   │   └── trips/        # markdown trip stories
-│   ├── data/
-│   │   ├── site.ts       # ← edit this first
-│   │   └── resume.ts     # experience, education, skills, typing roles
-│   ├── pages/            # index, work, blog, travel, 404, rss
-│   └── styles/global.css # design tokens + all styling (no framework)
-└── astro.config.mjs      # set your production URL here
+```bash
+npm run build
 ```
 
-## Writing content
+Preview the production build locally:
 
-### Blog post
+```bash
+npm run preview
+```
 
-Create a markdown file in `src/content/blog/`:
+Run Astro checks:
+
+```bash
+npm run check
+```
+
+## Blog
+
+Blog posts are written in Markdown and stored under:
+
+```text
+src/content/blog/
+```
+
+Example:
 
 ```md
 ---
-title: My first post
+title: My Post
 subtitle: An optional subtitle
-date: 2026-01-15
-tags: [notes]
-category: tech        # or life
-description: One-liner for cards and SEO.
-draft: false          # true hides the post from builds
+date: 2026-09-03
+tags:
+  - power-platform
+  - dataverse
+category: tech
+description: Short description for cards and SEO.
 ---
 
-Your words here.
+Article content goes here.
 ```
 
-### Trip entry
+## Deployment
 
-Create a markdown file in `src/content/trips/`, drop photos into `public/img/trips/<trip>/`, and list them:
+The website is designed to be deployed as a static site.
 
-```md
----
-title: Kyoto, 2026
-place: Kyoto, Japan
-date: 2026-04-10
-summary: One line for the card.
-heroImage: /img/trips/kyoto/hero.jpg
-circlePhotos:                 # photos for the rotating ring
-  - /img/trips/kyoto/torii.jpg
-gallery:
-  - /img/trips/kyoto/hero.jpg
-highlights:
-  - Fushimi Inari at sunrise
----
+The repository includes a GitHub Actions workflow for deployment to GitHub Pages.
 
-Story body here.
+A production build is generated with:
+
+```bash
+npm run build
 ```
 
-Photos in `gallery` get a carousel with a click-to-open lightbox, thumbnail strip, fullscreen mode, and arrow-key navigation. `.mp4`/`.webm` files are supported alongside images.
+The generated static site is written to:
 
-## Customization checklist
+```text
+dist/
+```
 
-1. `src/data/site.ts` — name, description, URL, socials
-2. `src/data/resume.ts` — roles, education, skills, hero typing words
-3. `public/img/avatar.svg` → your photo · `public/img/og.jpg` → a 1200×630 share card
-4. `astro.config.mjs` — set `site` to your production URL, and set (or remove) `base`
-5. Write real content, then delete the two sample posts and sample trip
-
-## Deploy
-
-The included `.github/workflows/deploy.yml` builds and deploys to GitHub Pages on every push to `main`. In your repo settings, set **Settings → Pages → Source** to **GitHub Actions**.
-
-### Hosting at a subpath (e.g. `username.github.io/my-repo`)
-
-Keep `base: '/my-repo'` in `astro.config.mjs`. All internal links and assets are routed through a single `withBase()` helper, so everything just works. The deploy workflow automatically nests the build output under your base path so GitHub Pages resolves it. This is how the [live demo](https://igagansingh.com/astro-wanderer) is hosted.
-
-### Hosting at the domain root (`example.com`)
-
-Remove the `base` line from `astro.config.mjs`. The workflow detects this and ships the output un-nested.
-
-Any static host works too — Netlify, Vercel, Cloudflare Pages — just point the build command at `npm run build` with output `dist/`.
-
-## Commands
-
-| Command           | Action                                    |
-| :---------------- | :---------------------------------------- |
-| `npm run dev`     | Start local dev server                    |
-| `npm run build`   | Production build to `./dist/`             |
-| `npm run preview` | Preview the production build locally      |
-| `npm run check`   | Type-check the project                    |
+The site can also be hosted on other static hosting platforms such as Cloudflare, Vercel, or Netlify.
 
 ## Credits
 
-Built by [Gagan Singh](https://igagansingh.com) with [opencode](https://opencode.ai) — every part of this template, from the design tokens to the photo lightbox, was written pair-programming style with an AI coding agent.
+This website is based on the open-source [Astro Wanderer](https://github.com/igagansingh/astro-wanderer) theme created by [Gagan Singh](https://igagansingh.com).
+
+The original theme provided the foundation for the design and Astro structure. It has since been customized and extended with additional pages, components, content structures, projects, speaking history, certifications, and other changes for this personal website.
 
 ## License
 
-MIT — free for personal and commercial use. If it saved you an afternoon, a star or a link back is always appreciated.
+This project is licensed under the MIT License.
+
+The original Astro Wanderer theme is Copyright (c) 2026 Gagan Singh and is distributed under the MIT License.
+
+Modifications and additional work are Copyright (c) 2026 Gjorgji Gjuzelov.
+
+See [LICENSE](LICENSE) for details.
